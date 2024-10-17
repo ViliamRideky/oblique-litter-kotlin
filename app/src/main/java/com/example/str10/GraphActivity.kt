@@ -40,14 +40,17 @@ class GraphActivity : AppCompatActivity() {
             graphView.gridLabelRenderer.horizontalAxisTitle = "Čas [s]"
             graphView.gridLabelRenderer.verticalAxisTitle = "Výška [m]"
 
-            // Manuálne nastavenie rozsahov na osiach
             graphView.viewport.isXAxisBoundsManual = true
             graphView.viewport.setMinX(0.0)
-            graphView.viewport.setMaxX(tCoords.maxOrNull() ?: 0.0 * 1.1)
 
             graphView.viewport.isYAxisBoundsManual = true
             graphView.viewport.setMinY(0.0)
-            graphView.viewport.setMaxY(yCoords.maxOrNull()?.times(1.1) ?: 0.0)
+
+            graphView.viewport.setMaxX((tCoords.maxOrNull() ?: 0.0) * 1.2)
+            graphView.viewport.setMaxY((yCoords.maxOrNull() ?: 0.0) * 1.2)
+
+            graphView.viewport.setScalableY(true)
+
 
             // Povolenie zoomovania a scrollovania
             graphView.viewport.isScalable = true
